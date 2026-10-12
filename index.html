@@ -221,6 +221,10 @@ h1 {
 }
 .btn:hover { background: var(--accent-strong); }
 .btn:active { transform: scale(0.98); }
+.closed { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: var(--text-sm); color: var(--ink-2); }
+.closed b { color: var(--ink); }
+.btn--off, .btn--off:hover { margin-top: 0; background: var(--soon-bg); color: var(--muted); cursor: not-allowed; }
+.btn--off:active { transform: none; }
 
 /* schedule: list / calendar switch */
 .sec__head { display: flex; align-items: center; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; }
@@ -442,12 +446,6 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
   <section class="sec" id="notice" aria-labelledby="notice-h">
     <h2 id="notice-h">공지</h2>
-    <article class="card">
-      <h3>판넬 일괄 제작 금액 · 신청 폼 안내</h3>
-      <p class="due">금액 확정 전 · 신청 마감 <b>10.20 화 18:00</b></p>
-      <p>판넬 일괄 제작 금액이 아직 확정되지 않았습니다. 신청 폼에 적어 둔 금액보다 더 들 예정이며, 특히 A형이 그렇습니다.</p>
-      <p>그래서 지금은 신청 폼을 닫아 두었습니다. 금액이 확정되면 공지하고 폼을 엽니다. 진행 일정에는 문제가 없습니다.</p>
-    </article>
     <article class="card">
       <h3>추가 회비 안내</h3>
       <p class="due">추가 회비 <b>20,000원</b> · 입금 마감 <b>10.16 금</b></p>
@@ -747,6 +745,17 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
         </ul>
         <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdcEHpzwAy5KeVnEqQ46qqhPYfmwblehhvd3g-1UkSUsFd4fQ/viewform" target="_blank" rel="noopener">폼 열기 <span aria-hidden="true">↗</span></a>
       </article>
+      <article class="card">
+        <span class="chip chip--hold" style="align-self:flex-start">닫힘</span>
+        <h3>판넬 일괄 제작 신청</h3>
+        <p class="due">희망자 · 마감 <b>10.20 화 18:00</b></p>
+        <ul>
+          <li>금액이 확정되면 폼을 열고 카카오톡 공지방에 안내합니다.</li>
+          <li>진행 일정에는 문제가 없습니다.</li>
+          <li>업체 · 사양 · 파일 이름은 <a href="#bulk">판넬 규격 › 일괄 제작</a>에 있습니다.</li>
+        </ul>
+        <p class="closed"><span class="btn btn--off" aria-disabled="true">현재 폼 X</span><span>사유: <b>A형 금액 미확정</b></span></p>
+      </article>
     </div>
   </section>
 
@@ -931,7 +940,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="log" aria-labelledby="log-h">
     <h2 id="log-h">변경 내역</h2>
     <ul class="log">
-      <li><time datetime="2026-10-12">10.12</time><span>공지에 판넬 일괄 제작 금액 안내를 올렸습니다. 금액이 확정되지 않아 신청 폼을 닫아 두었고, 확정되면 공지하고 폼을 엽니다.</span></li>
+      <li><time datetime="2026-10-12">10.12</time><span>구글 폼에 판넬 일괄 제작 신청을 넣었습니다. A형 금액이 확정되지 않아 지금은 폼을 닫아 두었고, 확정되면 폼을 엽니다.</span></li>
       <li><time datetime="2026-10-12">10.12</time><span>판넬 일괄 제작 안내(업체 시트앤몰, 사양, 신청 방법, 파일 이름)를 추가하고, 10.20 마감을 신청 · 입금 · 출력 파일 업로드로 바꿨습니다. 판넬 재질은 유광만 아니면 됩니다.</span></li>
       <li><time datetime="2026-10-12">10.12</time><span>공지에 추가 회비 안내를 올리고, 일정에 10.16 추가 회비 입금 마감을 넣었습니다.</span></li>
       <li><time datetime="2026-10-12">10.12</time><span>시트지 가로폭을 1,980mm로 통일했습니다. 양옆 여백은 240mm로 바뀌었습니다. (내용 폭 1,500mm는 그대로)</span></li>
