@@ -62,10 +62,13 @@ body {
   margin-inline: auto;
   padding-inline: 20px;
   padding-block: 2.5rem 4rem;
+  --sec-gap: 3rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: var(--sec-gap);
 }
+.body, .pair { display: flex; flex-direction: column; gap: var(--sec-gap); min-width: 0; }
+.blocks, .block { display: flex; flex-direction: column; gap: 1.1rem; min-width: 0; }
 h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
@@ -323,7 +326,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .foot { color: var(--muted); font-size: var(--step--1); border-top: 2px solid var(--accent); padding-top: 0.9rem; display: flex; flex-direction: column; gap: 0.6rem; }
 
 @media (max-width: 30rem) {
-  .page { padding-inline: 16px; gap: 2.5rem; }
+  .page { padding-inline: 16px; --sec-gap: 2.5rem; }
   .day { grid-template-columns: 4.75rem minmax(0, 1fr); gap: 0.5rem 0.9rem; }
   .day__num { font-size: 2rem; }
   .item { grid-template-columns: minmax(0, 1fr); }
@@ -335,6 +338,63 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   .cal__num { align-self: center; font-size: 1rem; padding-inline: 0.15rem; }
   .cal__labs { gap: 2px; }
   .cal__lab { font-size: 0; line-height: 0; padding: 0; height: 4px; }
+}
+
+/* Wide screens: the title and section links stay in a left rail, the content takes the rest. */
+@media (min-width: 64rem) {
+  .page {
+    max-width: 100rem;
+    padding-inline: clamp(2rem, 3.5vw, 3.5rem);
+    display: grid;
+    grid-template-columns: clamp(13rem, 17vw, 15.5rem) minmax(0, 1fr);
+    column-gap: clamp(3rem, 4.5vw, 5rem);
+    align-items: start;
+  }
+  h1 { font-size: 3.5rem; }
+  .jump { flex-direction: column; flex-wrap: nowrap; gap: 0.1rem; padding-block: 0.6rem; }
+  .jump a { padding: 0.25rem 0.6rem; border-radius: 3px; }
+  .jump a[aria-current] { background: var(--accent); color: var(--on-accent); }
+  .jump a[aria-current]:hover { text-decoration: none; }
+  .sec { scroll-margin-top: 2.5rem; }
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pair { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); column-gap: 3rem; align-items: start; }
+  .foot p { max-width: 46rem; }
+}
+@media (min-width: 64rem) and (min-height: 34rem) {
+  .mast { position: sticky; top: 2.5rem; }
+}
+@media (min-width: 64rem) and (max-width: 79.99rem) {
+  .pair .who div { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}
+
+/* Wider still: calendar and list sit side by side, reference blocks pair up. */
+@media (min-width: 80rem) {
+  .sec.is-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 1.1rem 2.5rem;
+    align-items: start;
+  }
+  .is-split .sec__head { grid-column: 1 / -1; }
+  .is-split .cal { grid-column: 1; grid-row: 2; }
+  .is-split .days { grid-column: 2; grid-row: 2; }
+  .is-split .day { padding-inline: 0.8rem; }
+  .is-split .day.is-picked { background: var(--surface); box-shadow: inset 3px 0 0 var(--accent); }
+  .is-split .item { grid-template-columns: minmax(0, 1fr); }
+  .is-split .cal__lab { white-space: normal; }
+  .is-split .cal__cell:not(.has-items) { cursor: default; }
+  .is-split .cal__cell:not(.has-items):hover { background: var(--bg); }
+
+  .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .blocks--2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 2.5rem; align-items: start; }
+  .blocks--side { gap: 1.75rem; }
+  .blocks--side .block { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 1.1rem 2.5rem; align-items: start; }
+  .blocks--side .block > .sub { grid-column: 1 / -1; }
+  .blocks--2 .sub, .blocks--side .sub { margin-top: 0; }
+}
+@media (min-width: 80rem) and (min-height: 44rem) {
+  .is-split .cal { position: sticky; top: 2.5rem; }
 }
 </style>
 </head>
@@ -356,6 +416,8 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       <a href="#contact">문의</a>
     </nav>
   </header>
+
+  <div class="body">
 
   <section class="sec" id="schedule" aria-labelledby="schedule-h">
     <div class="sec__head">
@@ -632,6 +694,8 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
     <h2 id="panel-h">판넬 규격</h2>
     <p class="note">4차 총회에서 정리한 기준입니다. 좌대 너비에 맞추던 양끝정렬 안내는 아래의 내용 폭 1,500mm 고정으로 바뀌었습니다.</p>
 
+    <div class="blocks blocks--2">
+    <div class="block">
     <h3 class="sub">공통 치수</h3>
     <div class="scroll">
       <table>
@@ -645,6 +709,8 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       </table>
     </div>
 
+    </div>
+    <div class="block">
     <h3 class="sub">유형 (자유 선택)</h3>
     <div class="scroll">
       <table>
@@ -658,6 +724,8 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       </table>
     </div>
 
+    </div>
+    <div class="block">
     <h3 class="sub">내용</h3>
     <ul class="rules">
       <li>작품 설명은 도록에 들어간 설명과 크게 다르지 않게 씁니다.</li>
@@ -666,6 +734,8 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       <li>모니터와 목업이 그래픽과 겹치지 않게 여유를 둡니다.</li>
     </ul>
 
+    </div>
+    <div class="block">
     <h3 class="sub">할 수 없는 것과 예외</h3>
     <ul class="rules">
       <li>이미지 없이 글씨만 시트 커팅한 판넬은 안 됩니다.</li>
@@ -674,12 +744,16 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       <li>백주년 벽은 타공할 수 없습니다. 렌탈 가벽은 공지의 설치 가능 품목을 확인하고, 디피 계획 자료에 벽 타공 여부를 꼭 적어 주세요.</li>
       <li>가구 트랙은 패널 없이 캡션으로 진행합니다.</li>
     </ul>
+    </div>
+    </div>
   </section>
 
   <section class="sec" id="spec" aria-labelledby="spec-h">
     <h2 id="spec-h">도록 · 인스타 규격</h2>
     <p class="note">제출 폼에 적힌 기준을 옮긴 요약입니다. 자세한 내용은 제출 가이드 PDF를 따릅니다.</p>
 
+    <div class="blocks blocks--side">
+    <div class="block">
     <h3 class="sub">이미지</h3>
     <div class="scroll scroll--wide">
       <table>
@@ -704,6 +778,8 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       <li>SNS 첫 장은 그래픽과 텍스트가 없는 촬영 또는 렌더 이미지입니다.</li>
     </ul>
 
+    </div>
+    <div class="block">
     <h3 class="sub">글자수 (공백 포함)</h3>
     <div class="scroll">
       <table>
@@ -724,8 +800,11 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       <li>문단이 바뀌는 자리에 슬래시 두 개 <code>//</code> 를 넣습니다. 글자수에는 <code>//</code> 도 포함됩니다.</li>
       <li>전시자명 영문은 여권 표기, 성 이름 순서입니다. 예: <code>Kim Sandi</code></li>
     </ul>
+    </div>
+    </div>
   </section>
 
+  <div class="pair">
   <section class="sec" id="log" aria-labelledby="log-h">
     <h2 id="log-h">변경 내역</h2>
     <ul class="log">
@@ -742,12 +821,15 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       <div><dt>그 밖의 사항</dt><dd>졸준위원장 강태웅</dd></div>
     </dl>
   </section>
+  </div>
 
   <footer class="foot">
     <p>본 안내 사이트는 10월 12일(월) 졸업전시자 4차 총회 이후 공개되었습니다. 기존에 카카오톡 공지방을 통해 개별적으로 전달했던 안내사항을 한곳에서 확인할 수 있도록 제작하였습니다.</p>
     <p>따라서 이전 공지와 상이한 내용이 있을 경우, 본 사이트에 기재된 내용을 최신 기준으로 확인해 주시기 바랍니다.</p>
     <p>공지사항의 변경 및 통합 과정에서 혼선을 드린 점 양해 부탁드립니다. 사이트 이용 및 안내사항과 관련한 문의는 시각팀 류주성에게 연락해 주시기 바랍니다.</p>
   </footer>
+
+  </div>
 
 </div>
 
@@ -839,7 +921,12 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
     cell.appendChild(labs);
     cell.setAttribute("aria-label", (dt.getUTCMonth() + 1) + "월 " + dt.getUTCDate() + "일 " + DOW_FULL[dt.getUTCDay()] +
       (names.length ? ", " + names.join(", ") : ", 일정 없음"));
-    cell.addEventListener("click", function () { select(this.getAttribute("data-day")); });
+    if (info) cell.classList.add("has-items");
+    cell.addEventListener("click", function () {
+      var day = this.getAttribute("data-day");
+      if (split && !byDay[day]) return;
+      select(day, true);
+    });
     grid.appendChild(cell);
     cells[k] = cell;
   }
@@ -848,18 +935,35 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   var k1 = el("span"); k1.appendChild(el("i", "due")); k1.appendChild(document.createTextNode("마감"));
   var k2 = el("span"); k2.appendChild(el("i")); k2.appendChild(document.createTextNode("그 밖의 일정"));
   key.appendChild(k1); key.appendChild(k2);
-  key.appendChild(el("span", "", "날짜를 누르면 아래에 내용이 나옵니다."));
+  var hint = el("span", "", "날짜를 누르면 아래에 내용이 나옵니다.");
+  key.appendChild(hint);
 
   var detail = el("div", "cal__detail");
   detail.setAttribute("aria-live", "polite");
   cal.appendChild(grid); cal.appendChild(key); cal.appendChild(detail);
 
+  var sched = document.getElementById("schedule");
+  var wide = window.matchMedia ? window.matchMedia("(min-width: 80rem)") : null;
+  var calm = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+  var split = false;
+
   var selected = null;
-  function select(k) {
+  function select(k, byHand) {
     if (selected && cells[selected]) cells[selected].setAttribute("aria-pressed", "false");
     selected = k;
     if (cells[k]) cells[k].setAttribute("aria-pressed", "true");
     var ms = utc(k), dt = new Date(ms), info = byDay[k];
+    // Side by side, the list is the detail: mark that day's row and bring it into view.
+    for (var x = 0; x < rows.length; x++) rows[x].classList.remove("is-picked");
+    if (info) {
+      for (var y = 0; y < info.rows.length; y++) info.rows[y].classList.add("is-picked");
+      if (byHand && split) {
+        var box = info.rows[0].getBoundingClientRect();
+        if (box.top < 0 || box.bottom > window.innerHeight) {
+          info.rows[0].scrollIntoView({ block: "center", behavior: calm && calm.matches ? "auto" : "smooth" });
+        }
+      }
+    }
     detail.textContent = "";
     var h = el("h3", "", pad(dt.getUTCMonth() + 1) + "." + pad(dt.getUTCDate()) + " " + DOW_FULL[dt.getUTCDay()]);
     var s = status(ms, ms, today);
@@ -878,19 +982,69 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   for (var n = 0; n < keys.length && !pick; n++) if (utc(keys[n]) >= today) pick = keys[n];
   select(pick || keys[keys.length - 1]);
 
-  function setView(v) {
-    var isCal = v === "cal";
-    list.hidden = isCal; cal.hidden = !isCal;
+  // Narrow screens switch between list and calendar; wide screens show both at once.
+  var view = "list";
+  try { if (localStorage.getItem("schedule-view") === "cal") view = "cal"; } catch (e) {}
+  function render() {
+    split = !!(wide && wide.matches);
+    var isCal = view === "cal";
+    if (sched) sched.classList.toggle("is-split", split);
+    seg.hidden = split;
+    list.hidden = !split && isCal;
+    cal.hidden = !split && !isCal;
+    detail.hidden = split;
+    hint.textContent = split ? "날짜를 누르면 오른쪽 목록에서 그 날로 이동합니다." : "날짜를 누르면 아래에 내용이 나옵니다.";
     bList.setAttribute("aria-pressed", String(!isCal));
     bCal.setAttribute("aria-pressed", String(isCal));
-    try { localStorage.setItem("schedule-view", isCal ? "cal" : "list"); } catch (e) {}
+  }
+  function setView(v) {
+    view = v;
+    try { localStorage.setItem("schedule-view", v); } catch (e) {}
+    render();
   }
   bList.addEventListener("click", function () { setView("list"); });
   bCal.addEventListener("click", function () { setView("cal"); });
-  var saved = null;
-  try { saved = localStorage.getItem("schedule-view"); } catch (e) {}
-  seg.hidden = false;
-  if (saved === "cal") setView("cal");
+  if (wide) {
+    if (wide.addEventListener) wide.addEventListener("change", render);
+    else if (wide.addListener) wide.addListener(render);
+  }
+  render();
+})();
+
+// Section links: mark the section being read (shown on wide screens, where the links stay in view).
+(function () {
+  var links = document.querySelectorAll('.jump a[href^="#"]');
+  var marks = [];
+  for (var i = 0; i < links.length; i++) {
+    var sec = document.getElementById(links[i].getAttribute("href").slice(1));
+    if (sec) marks.push({ link: links[i], sec: sec });
+  }
+  if (!marks.length) return;
+  var queued = false;
+  function mark() {
+    queued = false;
+    var line = 140, best = -Infinity, tops = [];
+    var doc = document.documentElement;
+    var atEnd = window.innerHeight + window.pageYOffset >= doc.scrollHeight - 2;
+    for (var i = 0; i < marks.length; i++) {
+      tops[i] = marks[i].sec.getBoundingClientRect().top;
+      if ((atEnd || tops[i] <= line) && tops[i] > best) best = tops[i];
+    }
+    // Sections that sit side by side share a top, so both links light up.
+    for (var j = 0; j < marks.length; j++) {
+      if (best > -Infinity && Math.abs(tops[j] - best) < 4) marks[j].link.setAttribute("aria-current", "location");
+      else marks[j].link.removeAttribute("aria-current");
+    }
+  }
+  function queue() {
+    if (queued) return;
+    queued = true;
+    if (window.requestAnimationFrame) window.requestAnimationFrame(mark);
+    else window.setTimeout(mark, 16);
+  }
+  window.addEventListener("scroll", queue, { passive: true });
+  window.addEventListener("resize", queue);
+  mark();
 })();
 </script>
 </body>
