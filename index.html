@@ -366,6 +366,22 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .log { display: flex; flex-direction: column; gap: 12px; }
 .log li { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 16px; align-items: baseline; }
 .log time { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--muted); font-variant-numeric: tabular-nums; }
+.log-more { display: flex; flex-direction: column; gap: 16px; }
+.log-more > summary {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 4px;
+  min-height: 36px; padding-inline: 16px;
+  border: 1px solid var(--accent); border-radius: var(--r-pill);
+  color: var(--accent); font-size: var(--text-sm); font-weight: 700;
+  cursor: pointer; list-style: none;
+}
+.log-more > summary::-webkit-details-marker { display: none; }
+.log-more > summary:hover { background: var(--accent-soft); }
+.log-more > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.log-more__close, .log-more[open] .log-more__open { display: none; }
+.log-more[open] .log-more__close { display: inline; }
+.log-more[open] .log-more__arrow { transform: rotate(180deg); }
+.log-more__arrow { display: inline-block; }
 .who { display: flex; flex-direction: column; gap: 12px; }
 .who div { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 16px; align-items: baseline; }
 .who dt { color: var(--muted); font-size: var(--text-sm); }
@@ -1287,6 +1303,36 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   window.addEventListener("scroll", queue, { passive: true });
   window.addEventListener("resize", queue);
   mark();
+})();
+
+// Change log: only the newest day stays open; earlier entries fold into a toggle.
+// New entries go at the top of the one list as before; the split happens here, so nothing to move by hand.
+(function () {
+  var list = document.querySelector("#log .log");
+  if (!list || !window.HTMLDetailsElement) return;
+  var items = list.querySelectorAll(":scope > li");
+  var newest = "";
+  for (var i = 0; i < items.length; i++) {
+    var t = items[i].querySelector("time");
+    var d = t ? t.getAttribute("datetime") : "";
+    if (d > newest) newest = d;
+  }
+  var older = [];
+  for (var j = 0; j < items.length; j++) {
+    var tt = items[j].querySelector("time");
+    if (!tt || tt.getAttribute("datetime") !== newest) older.push(items[j]);
+  }
+  if (!older.length) return;
+  var box = document.createElement("details");
+  box.className = "log-more";
+  var sum = document.createElement("summary");
+  sum.innerHTML = '<span class="log-more__open">이전 내역 ' + older.length + '개 보기</span><span class="log-more__close">이전 내역 접기</span> <span aria-hidden="true" class="log-more__arrow">↓</span>';
+  var rest = document.createElement("ul");
+  rest.className = "log";
+  for (var k = 0; k < older.length; k++) rest.appendChild(older[k]);
+  box.appendChild(sum);
+  box.appendChild(rest);
+  list.parentNode.insertBefore(box, list.nextSibling);
 })();
 </script>
 </body>
