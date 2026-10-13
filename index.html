@@ -225,28 +225,42 @@ h1 {
 .closed b { color: var(--ink); }
 .btn--off, .btn--off:hover { margin-top: 0; background: var(--soon-bg); color: var(--muted); cursor: not-allowed; }
 
-/* notice whose body jumps to the matching part of the page */
+.btn--off:active { transform: none; }
+
+/* notice: the body jumps to the matching part of the page; the pills below only scroll, never leave */
 .notice-link {
   display: flex; flex-direction: column; gap: 12px;
   margin: -8px; padding: 8px; border-radius: var(--r-tag);
   color: inherit; text-decoration: none;
 }
-.notice-link ul { padding-bottom: 0; }
-.notice-more { font-size: var(--text-sm); font-weight: 700; color: var(--accent); }
-.notice-link:hover .notice-more { text-decoration: underline; }
 .card:has(.notice-link:hover) { background: var(--accent-soft); }
+#notice .cards { align-items: start; }
+.notice-go { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px; }
+.notice-go a {
+  display: inline-flex; align-items: center; gap: 4px;
+  min-height: 36px; padding-inline: 16px;
+  border: 1px solid var(--accent); border-radius: var(--r-pill);
+  color: var(--accent); font-size: var(--text-sm); font-weight: 700;
+  text-decoration: none;
+}
+.notice-go a:hover { background: var(--bg); }
 
-/* a block reached from a notice: room above it, and a short tint so the eye lands on it */
-.block[id] { scroll-margin-top: 16px; }
+/* where a notice lands: room above it, and a short tint so the eye finds it */
+.block[id], .card[id] { scroll-margin-top: 16px; }
 .block:target > .sub:first-child { animation: arrive 2.4s ease-out; border-radius: var(--r-tag); }
+.card:target { animation: arrive-card 2.4s ease-out; }
 @keyframes arrive {
   0%, 45% { background: var(--accent-soft); box-shadow: 0 0 0 8px var(--accent-soft); }
   100% { background: transparent; box-shadow: 0 0 0 8px transparent; }
 }
+@keyframes arrive-card {
+  0%, 45% { background: var(--accent-soft); box-shadow: 0 0 0 2px var(--accent); }
+  100% { background: var(--surface); box-shadow: 0 0 0 2px transparent; }
+}
 @media (prefers-reduced-motion: reduce) {
   .block:target > .sub:first-child { animation: none; background: var(--accent-soft); box-shadow: 0 0 0 8px var(--accent-soft); }
+  .card:target { animation: none; box-shadow: 0 0 0 2px var(--accent); }
 }
-.btn--off:active { transform: none; }
 
 /* schedule: list / calendar switch */
 .sec__head { display: flex; align-items: center; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; }
@@ -401,7 +415,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   }
   .jump a:hover { background: var(--surface); color: var(--ink); }
   .jump a[aria-current], .jump a[aria-current]:hover { background: var(--accent); color: var(--on-accent); font-weight: 700; }
-  .sec, .block[id] { scroll-margin-top: 48px; }
+  .sec, .block[id], .card[id] { scroll-margin-top: 48px; }
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pair { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); column-gap: 48px; align-items: start; }
   .foot p { max-width: 46rem; }
@@ -476,15 +490,11 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
         <h3>판넬 일괄 제작 신청 폼이 열렸습니다</h3>
         <p class="due">희망자 · 마감 <b>10.20 화 18:00</b></p>
         <p>판넬 일괄 제작 금액이 확정되어 10.13 (화)에 신청 폼을 열었습니다. 희망자만 신청하면 되고, 개인적으로 따로 제작해도 됩니다.</p>
-        <ul>
-          <li>A형: 좌대 900은 1,980 × 1,540 mm <b>80,000원</b>, 좌대 600은 1,980 × 1,840 mm <b>140,000원</b>입니다.</li>
-          <li>B형: 이미지 시트지와 글자 컷팅 시트를 각각 골라 두 금액을 합해서 냅니다. A4 8,000 + 6,000원부터 A0 38,000 + 36,000원까지입니다.</li>
-          <li>입금자명은 <code>학번_이름</code>, 입금 계좌는 신청 폼 안에 있습니다.</li>
-          <li>신청, 입금, 출력 파일 업로드를 모두 10.20 (화) 18:00까지 마칩니다.</li>
-        </ul>
-        <span class="notice-more">금액표 · 파일 이름 · 유의사항 보기 <span aria-hidden="true">↓</span></span>
       </a>
-      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd2C6j70t_93x7IEDv_bSU9CFwrDuoOnSxb_tifWhWaNYxL4g/viewform" target="_blank" rel="noopener">신청 폼 열기 <span aria-hidden="true">↗</span></a>
+      <p class="notice-go">
+        <a href="#bulk">금액표 · 신청 방법 <span aria-hidden="true">↓</span></a>
+        <a href="#form-panel">신청 폼 <span aria-hidden="true">↓</span></a>
+      </p>
     </article>
     <article class="card">
       <h3>추가 회비 안내</h3>
@@ -787,7 +797,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
         </ul>
         <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdcEHpzwAy5KeVnEqQ46qqhPYfmwblehhvd3g-1UkSUsFd4fQ/viewform" target="_blank" rel="noopener">폼 열기 <span aria-hidden="true">↗</span></a>
       </article>
-      <article class="card">
+      <article class="card" id="form-panel">
         <span class="chip chip--open" style="align-self:flex-start">접수 중</span>
         <h3>판넬 일괄 제작 신청</h3>
         <p class="due">희망자 · 마감 <b>10.20 화 18:00</b></p>
@@ -1022,7 +1032,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="log" aria-labelledby="log-h">
     <h2 id="log-h">변경 내역</h2>
     <ul class="log">
-      <li><time datetime="2026-10-13">10.13</time><span>공지에 판넬 일괄 제작 신청 폼 오픈 안내를 올렸습니다. 공지를 누르면 판넬 규격의 일괄 제작 안내로 이동합니다.</span></li>
+      <li><time datetime="2026-10-13">10.13</time><span>공지에 판넬 일괄 제작 신청 폼 오픈 안내를 올렸습니다. 공지의 버튼으로 판넬 규격의 금액표와 구글 폼 칸의 신청 폼으로 이동할 수 있습니다.</span></li>
       <li><time datetime="2026-10-13">10.13</time><span>10.21 일정을 홍보 시작 · 전체 공개로 바꾸고, 도록 · 인스타 11.03 마감의 뜻(10.27까지 작업, 필요한 경우 11.03까지 컨펌)을 보충했습니다. 일괄제작 시트지 수령일(10.30)은 예상일입니다.</span></li>
       <li><time datetime="2026-10-13">10.13</time><span>판넬 일괄 제작 금액이 확정되어 신청 폼을 열었습니다. A형은 80,000원 (좌대 900) · 140,000원 (좌대 600)이고, 금액표를 판넬 규격에 넣었습니다.</span></li>
       <li><time datetime="2026-10-12">10.12</time><span>가이드에 4차 총회 발표자료 PDF를 올렸습니다. 졸업전시 주제 소개(컨셉)는 10.21 이후 전체 공개 예정입니다.</span></li>
