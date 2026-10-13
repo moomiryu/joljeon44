@@ -323,6 +323,8 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .rules li { padding-left: 14px; position: relative; }
 .rules li::before { content: "·"; position: absolute; left: 4px; font-weight: 700; }
 .sub { font-size: var(--text-lg); font-weight: 700; line-height: 1.4; margin-top: 8px; }
+.sub--s { font-size: var(--text-md); }
+.price-note { color: var(--muted); font-size: var(--text-sm); }
 
 /* log + contact */
 .log { display: flex; flex-direction: column; gap: 12px; }
@@ -429,7 +431,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
     <p class="eyebrow"><span>서울과학기술대학교 산업디자인학과</span> <span>제44회 졸업전시 준비위원회</span></p>
     <h1>졸전 안내판</h1>
     <p class="lede">일정, 구글 폼, 가이드를 한곳에 모았습니다.</p>
-    <p class="stamp">갱신 <time datetime="2026-10-12">2026.10.12</time></p>
+    <p class="stamp">갱신 <time datetime="2026-10-13">2026.10.13</time></p>
     <nav class="jump" aria-label="바로가기">
       <a href="#notice">공지</a>
       <a href="#schedule">일정</a>
@@ -548,7 +550,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
             <span class="item__tag">마감</span>
             <div class="item__body">
               <span class="item__title">판넬 일괄 제작 신청 (희망자)</span>
-              <p><span class="when">18:00</span> 까지. 신청 폼 작성, 입금, 출력 파일 업로드를 모두 이때까지 마칩니다. 신청 폼은 A형 금액이 확정되면 엽니다. 졸준위가 공동구매를 진행하는 것이라, 개인적으로 따로 제작해도 됩니다. 자세한 내용은 아래 판넬 규격의 일괄 제작 안내를 봐 주세요.</p>
+              <p><span class="when">18:00</span> 까지. 신청 폼 작성, 입금, 출력 파일 업로드를 모두 이때까지 마칩니다. 신청 폼은 구글 폼 칸에 있습니다. 졸준위가 공동구매를 진행하는 것이라, 개인적으로 따로 제작해도 됩니다. 자세한 내용은 아래 판넬 규격의 일괄 제작 안내를 봐 주세요.</p>
             </div>
           </li>
         </ul>
@@ -746,15 +748,16 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
         <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdcEHpzwAy5KeVnEqQ46qqhPYfmwblehhvd3g-1UkSUsFd4fQ/viewform" target="_blank" rel="noopener">폼 열기 <span aria-hidden="true">↗</span></a>
       </article>
       <article class="card">
-        <span class="chip chip--hold" style="align-self:flex-start">닫힘</span>
+        <span class="chip chip--open" style="align-self:flex-start">접수 중</span>
         <h3>판넬 일괄 제작 신청</h3>
         <p class="due">희망자 · 마감 <b>10.20 화 18:00</b></p>
         <ul>
-          <li>A형 금액이 확정되면 폼을 열고 카카오톡 공지방에 안내합니다.</li>
-          <li>진행 일정에는 문제가 없습니다.</li>
-          <li>업체 · 사양 · 파일 이름은 <a href="#bulk">판넬 규격 › 일괄 제작</a>에 있습니다.</li>
+          <li>A형 · B형 중 하나를 고르고, 사이즈별 금액을 입금한 뒤 출력 파일을 올립니다.</li>
+          <li>A형 80,000원 (좌대 900) · 140,000원 (좌대 600). B형은 사이즈별 금액입니다.</li>
+          <li>입금 계좌는 폼 안에 있습니다. 입금자명은 <code>학번_이름</code>으로 적어 주세요.</li>
+          <li>금액표 · 업체 · 파일 이름은 <a href="#bulk">판넬 규격 › 일괄 제작</a>에 있습니다.</li>
         </ul>
-        <p class="closed"><span class="btn btn--off" aria-disabled="true">현재 폼 X</span><span>사유: <b>A형 금액 미확정</b></span></p>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd2C6j70t_93x7IEDv_bSU9CFwrDuoOnSxb_tifWhWaNYxL4g/viewform" target="_blank" rel="noopener">폼 열기 <span aria-hidden="true">↗</span></a>
       </article>
     </div>
   </section>
@@ -765,8 +768,8 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       <li class="file">
         <span class="file__kind">PDF</span>
         <span class="file__name">4차 총회 발표자료 (10.12)</span>
-        <a class="file__go" href="files/44_general-meeting-4_1012.pdf" target="_blank" rel="noopener">열기 <span aria-hidden="true">↗</span></a>
-        <span class="file__desc">일정, 판넬, 도록과 인스타그램 안내가 들어 있습니다. 04 졸업전시 주제 소개는 빠져 있습니다. 컨셉 소개는 10.21 이후 전체 공개 예정입니다.</span>
+        <a class="file__go" href="files/44_general-meeting-4_1013.pdf" target="_blank" rel="noopener">열기 <span aria-hidden="true">↗</span></a>
+        <span class="file__desc">일정, 판넬, 도록과 인스타그램 안내가 들어 있습니다. 판넬 금액은 10.13에 확정된 금액으로 바꿔 두었습니다. 04 졸업전시 주제 소개는 빠져 있습니다. 컨셉 소개는 10.21 이후 전체 공개 예정입니다.</span>
       </li>
       <li class="file">
         <span class="file__kind">PDF</span>
@@ -794,8 +797,8 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       </li>
       <li class="file">
         <span class="file__kind">PDF</span>
-        <span class="file__name">판넬(시트지) 안내 장표</span>
-        <a class="file__go" href="files/44_panel-guide_1012.pdf" target="_blank" rel="noopener">열기 <span aria-hidden="true">↗</span></a>
+        <span class="file__name">판넬(시트지) 안내 장표 (10.13)</span>
+        <a class="file__go" href="files/44_panel-guide_1013.pdf" target="_blank" rel="noopener">열기 <span aria-hidden="true">↗</span></a>
         <span class="file__desc">4차 총회 장표의 판넬 부분입니다. A형 · B형 판넬 예시 사진과 도면, 희망자 일괄 제작 안내가 들어 있습니다. 핵심 수치는 아래 판넬 규격에 옮겨 두었습니다.</span>
       </li>
     </ul>
@@ -867,20 +870,54 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
         <tbody>
           <tr><th scope="row">업체</th><td>시트앤몰</td></tr>
           <tr><th scope="row">사양</th><td>사각 시트지는 무광 화이트캘지 UV 인쇄입니다. A형은 사각 시트지 1장, B형은 이미지용 사각 시트지와 글자용 컷팅 시트 2건으로 주문합니다.</td></tr>
-          <tr><th scope="row">금액</th><td><strong>A형 금액이 아직 확정되지 않았습니다.</strong> 신청 폼에 적어 둔 금액보다 더 들 예정이며, 확정되면 공지합니다. B형은 사각 시트지와 컷팅 시트 금액을 합해서 냅니다.</td></tr>
-          <tr><th scope="row">신청 폼</th><td>A형 금액이 확정될 때까지 닫아 둡니다. 확정되면 공지하고 폼을 엽니다. 진행 일정에는 문제가 없습니다.</td></tr>
+          <tr><th scope="row">금액</th><td>아래 금액표를 봐 주세요 (10.13 확정). B형은 이미지 시트지와 글자 컷팅 시트 금액을 합해서 냅니다.</td></tr>
+          <tr><th scope="row">신청 폼</th><td>10.13 (화)에 열었습니다. <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2C6j70t_93x7IEDv_bSU9CFwrDuoOnSxb_tifWhWaNYxL4g/viewform" target="_blank" rel="noopener">신청 폼 열기 ↗</a></td></tr>
           <tr><th scope="row">신청 방법</th><td>① 판넬 유형 고르기 ② 내 사이즈의 금액 확인 ③ 입금 (입금자명 <code>학번_이름</code>, 계좌는 신청 폼에 있습니다) ④ 출력 파일 업로드와 폼 작성</td></tr>
           <tr><th scope="row">마감</th><td><span class="when">10.20 (화) 18:00</span>. 신청, 입금, 출력 파일 업로드를 모두 이때까지 마칩니다.</td></tr>
           <tr><th scope="row">파일</th><td>개인 드라이브 폴더의 [판넬] 폴더에 올립니다. A형은 <code>학번_이름_a타입.pdf</code>. B형은 <code>학번_이름_b타입 이미지.pdf</code>와 <code>학번_이름_b타입 텍스트.ai</code> 두 개를 올리고, ai 파일은 글꼴 외곽선을 꼭 깨 주세요.</td></tr>
         </tbody>
       </table>
     </div>
+    <div class="blocks blocks--2">
+    <div class="block">
+    <h4 class="sub sub--s">A형 금액</h4>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">좌대 높이</th><th scope="col">시트지</th><th scope="col">금액</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">900</th><td class="num">1,980 × 1,540 mm</td><td class="num"><strong>80,000원</strong></td></tr>
+          <tr><th scope="row">600</th><td class="num">1,980 × 1,840 mm</td><td class="num"><strong>140,000원</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="price-note">좌대 높이별로 붙일 수 있는 최대 크기입니다. 남는 부분은 흰 여백으로 둡니다.</p>
+    </div>
+    <div class="block">
+    <h4 class="sub sub--s">B형 금액</h4>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">사이즈</th><th scope="col">크기 (mm)</th><th scope="col">이미지 시트지</th><th scope="col">글자 컷팅 시트</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">A4</th><td class="num">210 × 297</td><td class="num">8,000원</td><td class="num">6,000원</td></tr>
+          <tr><th scope="row">A3</th><td class="num">297 × 420</td><td class="num">14,000원</td><td class="num">12,000원</td></tr>
+          <tr><th scope="row">A2</th><td class="num">420 × 594</td><td class="num">22,000원</td><td class="num">20,000원</td></tr>
+          <tr><th scope="row">A1</th><td class="num">594 × 841</td><td class="num">30,000원</td><td class="num">28,000원</td></tr>
+          <tr><th scope="row">A0</th><td class="num">841 × 1,189</td><td class="num">38,000원</td><td class="num">36,000원</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="price-note">두 금액을 합해서 냅니다. 예) 이미지 시트지 A1 + 글자 컷팅 시트 A3 = 42,000원</p>
+    </div>
+    </div>
     <ul class="rules">
       <li>10.20 (화) 마감 뒤에는 취소와 환불이 안 됩니다.</li>
       <li>폼을 냈더라도 출력 파일을 올리지 않으면 제작되지 않습니다.</li>
       <li>올린 파일의 실제 치수가 신청한 사이즈를 넘으면 차액을 추가로 냅니다.</li>
       <li>발주 뒤 정산하고 남는 금액은 폼에 적은 환불계좌로 돌려 드립니다.</li>
-      <li>신청 폼 링크는 폼을 열 때 카카오톡 공지방에 안내합니다.</li>
     </ul>
     </div>
   </section>
@@ -945,6 +982,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="log" aria-labelledby="log-h">
     <h2 id="log-h">변경 내역</h2>
     <ul class="log">
+      <li><time datetime="2026-10-13">10.13</time><span>판넬 일괄 제작 금액이 확정되어 신청 폼을 열었습니다. A형은 80,000원 (좌대 900) · 140,000원 (좌대 600)이고, 금액표를 판넬 규격에 넣었습니다.</span></li>
       <li><time datetime="2026-10-12">10.12</time><span>가이드에 4차 총회 발표자료 PDF를 올렸습니다. 졸업전시 주제 소개(컨셉)는 10.21 이후 전체 공개 예정입니다.</span></li>
       <li><time datetime="2026-10-12">10.12</time><span>가이드의 PDF 세 개(제출 가이드, 개인 스프레드 예시, 판넬 안내 장표)를 안내판에서 바로 열 수 있게 했습니다.</span></li>
       <li><time datetime="2026-10-12">10.12</time><span>구글 폼에 판넬 일괄 제작 신청을 넣었습니다. A형 금액이 확정되지 않아 지금은 폼을 닫아 두었고, 확정되면 폼을 엽니다.</span></li>
