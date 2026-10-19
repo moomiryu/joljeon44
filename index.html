@@ -246,7 +246,8 @@ h1 {
 .notice-go a:hover { background: var(--bg); }
 
 /* where a notice lands: room above it, and a short tint so the eye finds it */
-.block[id], .card[id], .item[id] { scroll-margin-top: 16px; }
+.block[id], .card[id], .item[id], .file[id] { scroll-margin-top: 16px; }
+.file:target { animation: arrive 2.4s ease-out; border-radius: var(--r-tag); }
 .block:target > .sub:first-child { animation: arrive 2.4s ease-out; border-radius: var(--r-tag); }
 .card:target { animation: arrive-card 2.4s ease-out; }
 .item:target { animation: arrive 2.4s ease-out; }
@@ -261,7 +262,7 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .block:target > .sub:first-child { animation: none; background: var(--accent-soft); box-shadow: 0 0 0 8px var(--accent-soft); }
   .card:target { animation: none; box-shadow: 0 0 0 2px var(--accent); }
-  .item:target { animation: none; background: var(--accent-soft); }
+  .item:target, .file:target { animation: none; background: var(--accent-soft); }
 }
 .item__link {
   display: inline-flex; align-items: center; gap: 4px;
@@ -351,6 +352,7 @@ a.file__go {
 }
 a.file__go:hover { background: var(--accent-soft); }
 .file__go.is-off { font-weight: 400; color: var(--muted); }
+.file__gos { display: inline-flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
 
 /* reference tables */
 .scroll { overflow-x: auto; border-block: 1px solid var(--line); }
@@ -404,7 +406,9 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   .item { grid-template-columns: minmax(0, 1fr); }
   .card { padding: 20px; }
   .file { grid-template-columns: 3rem minmax(0, 1fr); gap: 4px 12px; }
-  .file__go { grid-column: 2; justify-self: start; }
+  .file__go, .file__gos { grid-column: 2; justify-self: start; }
+  .file__gos { justify-content: flex-start; }
+  .file__gos .file__go { margin-block: 4px 0; }
   a.file__go { margin-block: 4px; }
   .who div { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .cal__dow { text-align: center; padding-inline: 0; }
@@ -440,7 +444,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   }
   .jump a:hover { background: var(--surface); color: var(--ink); }
   .jump a[aria-current], .jump a[aria-current]:hover { background: var(--accent); color: var(--on-accent); font-weight: 700; }
-  .sec, .block[id], .card[id], .item[id] { scroll-margin-top: 48px; }
+  .sec, .block[id], .card[id], .item[id], .file[id] { scroll-margin-top: 48px; }
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pair { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); column-gap: 48px; align-items: start; }
   .foot p { max-width: 46rem; }
@@ -492,7 +496,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
     <p class="eyebrow"><span>서울과학기술대학교 산업디자인학과</span> <span>제44회 졸업전시 준비위원회</span></p>
     <h1>졸전 안내판</h1>
     <p class="lede">일정, 구글 폼, 가이드를 한곳에 모았습니다.</p>
-    <p class="stamp">갱신 <time datetime="2026-10-15">2026.10.15</time></p>
+    <p class="stamp">갱신 <time datetime="2026-10-19">2026.10.19</time></p>
     <nav class="jump" aria-label="바로가기">
       <a href="#notice">공지</a>
       <a href="#schedule">일정</a>
@@ -510,6 +514,17 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="notice" aria-labelledby="notice-h">
     <h2 id="notice-h">공지</h2>
     <div class="cards">
+    <article class="card">
+      <a class="notice-link" href="#file-bguide">
+        <h3>B형 판넬 글자 참고 예시 (비공식)</h3>
+        <p class="due">B형 · 비공식 참고용 · <b>10.19</b></p>
+        <p>B형 판넬의 글자 크기, 행간 등에 대한 가이드가 더 있으면 좋겠다는 문의가 있어, 참고할 수 있는 예시 하나를 올렸습니다.</p>
+        <p>※ 공식 가이드가 아닙니다. 정해진 기준이 전혀 아니며, 이 수치를 따를 필요도 없습니다. 그대로 쓰기보다는 각자 작품과 판넬에 맞는지 직접 확인하신 뒤 적용해 주세요.</p>
+      </a>
+      <p class="notice-go">
+        <a href="#file-bguide">PDF · AI 파일 <span aria-hidden="true">↓</span></a>
+      </p>
+    </article>
     <article class="card">
       <h3>모니터 대여비 안내</h3>
       <p class="due">대여비 <b>88,000원</b> · 입금 마감 <b>10.21 수</b></p>
@@ -908,6 +923,15 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
         <a class="file__go" href="https://drive.google.com/file/d/17EhLV9EzEAQx3L_ufhLNpR0dzL8GyFdB/view" target="_blank" rel="noopener">열기 <span aria-hidden="true">↗</span></a>
         <span class="file__desc">4차 총회 장표의 판넬 부분입니다. A형 · B형 판넬 예시 사진과 도면, 희망자 일괄 제작 안내가 들어 있습니다. 핵심 수치는 아래 판넬 규격에 옮겨 두었습니다.</span>
       </li>
+      <li class="file" id="file-bguide">
+        <span class="file__kind">PDF</span>
+        <span class="file__name">B형 판넬 글자 참고 예시 (비공식, 10.19)</span>
+        <span class="file__gos">
+          <a class="file__go" href="https://drive.google.com/file/d/1phMlPAfICAVXmvP31lw_7NCjFjXH0lOg/view" target="_blank" rel="noopener">PDF 열기 <span aria-hidden="true">↗</span></a>
+          <a class="file__go" href="https://drive.google.com/uc?export=download&amp;id=1KTE2ztKauvrNuhxkqfqs-8s9DrnXLCQU" target="_blank" rel="noopener">AI 받기 <span aria-hidden="true">↓</span></a>
+        </span>
+        <span class="file__desc">공식 가이드가 아닌 참고용 예시입니다. 이 수치를 따를 필요는 없으니, 각자 작품과 판넬에 맞는지 직접 확인한 뒤 적용해 주세요. 1:1 실제 크기(1,980 × 1,540mm) 대지에 본문 Pretendard 105pt / 행간 168pt, 또는 90pt / 행간 144pt (행간 160%)로 놓아 보았습니다. 원본 일러스트 파일도 받을 수 있습니다.</span>
+      </li>
     </ul>
   </section>
 
@@ -945,6 +969,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
         </tbody>
       </table>
     </div>
+    <p class="price-note">B형 글자 크기 · 행간 예시는 <a href="#file-bguide">가이드 › B형 판넬 글자 참고 예시</a>에 있습니다. 공식 기준이 아닌 비공식 참고용입니다.</p>
 
     </div>
     <div class="block">
@@ -1090,6 +1115,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="log" aria-labelledby="log-h">
     <h2 id="log-h">변경 내역</h2>
     <ul class="log">
+      <li><time datetime="2026-10-19">10.19</time><span>가이드에 B형 판넬 글자 참고 예시(PDF, 원본 AI)를 올리고 공지에 알렸습니다. 공식 기준이 아닌 비공식 참고용입니다.</span></li>
       <li><time datetime="2026-10-15">10.15</time><span>판넬 제목 좌측 정렬의 뜻을 보충했습니다. 제목은 내용 영역 왼쪽 위에 왼쪽 정렬로 두되, 안쪽 여백은 개인 판단으로 두어도 됩니다.</span></li>
       <li><time datetime="2026-10-15">10.15</time><span>공지에 모니터 대여비 안내를 올리고, 일정에 10.21 모니터 대여비 입금 마감을 넣었습니다. 대여비는 88,000원 (부가세, 배송비 포함)입니다.</span></li>
       <li><time datetime="2026-10-13">10.13</time><span>10.15 스튜디오 촬영 예약 시트와 장소(다빈치관 4층)를 공지와 일정에 넣었습니다. 세팅(카메라 포함)은 오전에 해 두니 SD카드만 챙겨 오세요.</span></li>
