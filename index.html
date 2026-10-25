@@ -1195,6 +1195,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="log" aria-labelledby="log-h">
     <h2 id="log-h">변경 내역</h2>
     <ul class="log">
+      <li><time datetime="2026-10-25">10.25</time><span>모바일에서 일정이 달력으로 보일 때 공지의 아래로 가기 버튼이 동작하지 않던 문제를 고쳤습니다.</span></li>
       <li><time datetime="2026-10-25">10.25</time><span>공지에 11.1~11.2 작품 설치 안내를 올렸습니다. 시트지는 종이 테이프로 가부착만 하고, 점심 · 저녁 시간은 피해서 방문해 주세요.</span></li>
       <li><time datetime="2026-10-25">10.25</time><span>일정에 전시 설치 확정 일정을 반영했습니다. 11.01 설치 1일차, 11.02 설치 2일차(22:00 마무리), 11.03 최종심사 9:00와 13:00–18:00 배치 변경, 11.04 17:00 오픈식입니다.</span></li>
       <li><time datetime="2026-10-23">10.23</time><span>공지에 아이덴티티 공개와 지류 초대장 배부(10.27), 전자 초대장 링크 안내를 올렸습니다.</span></li>
@@ -1429,6 +1430,26 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
     else if (wide.addListener) wide.addListener(render);
   }
   render();
+
+  // Links into the schedule list (notice pills): if the calendar is showing on a narrow screen, switch to the list first.
+  function openListFor(id) {
+    var t = id ? document.getElementById(id) : null;
+    if (t && list.contains(t) && list.hidden) { view = "list"; render(); }
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (a) openListFor(a.getAttribute("href").slice(1));
+  });
+  window.addEventListener("hashchange", function () {
+    openListFor(location.hash.slice(1));
+    var t = document.getElementById(location.hash.slice(1));
+    if (t) t.scrollIntoView();
+  });
+  if (location.hash) {
+    openListFor(location.hash.slice(1));
+    var t0 = document.getElementById(location.hash.slice(1));
+    if (t0) t0.scrollIntoView();
+  }
 })();
 
 // Section links: mark the section being read (shown on wide screens, where the links stay in view).
