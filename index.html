@@ -515,6 +515,23 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
     <h2 id="notice-h">공지</h2>
     <div class="cards">
     <article class="card">
+      <a class="notice-link" href="#judging">
+        <h3>[중요] 11월 3일 최종심사 안내</h3>
+        <p class="due">전원 · 최종심사 + 배치 변경 · <b>11.3 화</b></p>
+        <p>교수님들이 최종 전시 작품을 결정하는 심사입니다. 심사 이후 배치가 바뀔 가능성이 매우 크니 꼭 끝까지 남아 주세요.</p>
+        <ul>
+          <li>심사 시간: 09:00 ~ 13:00 (예정). 심사 중에는 졸전자 전원 전시장 밖에서 대기해 주세요.</li>
+          <li>심사가 끝나도 절대 귀가하지 마세요. 바뀐 디피를 직접 확인하고 작품을 옮겨야 합니다.</li>
+          <li>배치가 바뀌면 가벽 · 좌대 등 무거운 짐을 다른 층으로 옮겨야 할 수 있습니다. 함께 도와주시면 정말 큰 힘이 됩니다.</li>
+          <li>11/3(화) 하루 전체 ~ 11/4(수) 오전까지는 약속이나 다른 일정을 최대한 비워 주세요.</li>
+          <li>자리를 비운 사이 작품을 옮기다 생긴 파손은 졸준위가 책임질 수 없습니다.</li>
+        </ul>
+      </a>
+      <p class="notice-go">
+        <a href="#judging">심사 일정 <span aria-hidden="true">↓</span></a>
+      </p>
+    </article>
+    <article class="card">
       <a class="notice-link" href="#install">
         <h3>11월 1일 ~ 2일 작품 설치 안내</h3>
         <p class="due">전원 · 목업 설치 + 시트지 가부착 · <b>11.1 일 ~ 11.2 월</b></p>
@@ -814,18 +831,18 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
           <span class="dday" hidden></span>
         </div>
         <ul class="day__items">
-          <li class="item" data-short="최종심사">
+          <li class="item" id="judging" data-short="최종심사">
             <span class="item__tag">심사</span>
             <div class="item__body">
               <span class="item__title">최종 졸업 작품 심사</span>
-              <p><span class="when">09:00</span> 심사 시간 전까지 작품 세팅이 완료된 상태여야 합니다.</p>
+              <p><span class="when">09:00–13:00</span> 예정. 심사 시간 전까지 작품 세팅이 완료된 상태여야 하며, 심사 중에는 졸전자 전원 전시장 밖에서 대기해 주세요.</p>
             </div>
           </li>
           <li class="item" data-short="배치 변경">
             <span class="item__tag">설치</span>
             <div class="item__body">
               <span class="item__title">심사 후 배치 변경</span>
-              <p><span class="when">13:00–18:00</span> 가벽 · 좌대 위치가 바뀐 분은 졸준위와 함께 작품을 옮깁니다.</p>
+              <p><span class="when">13:00–18:00</span> 심사가 끝나도 귀가하지 마세요. 바뀐 디피를 직접 확인하고, 가벽 · 좌대 위치가 바뀐 분은 졸준위와 함께 작품을 옮깁니다. 무거운 짐을 다른 층으로 옮길 수 있으니 서로 도와주세요. 11/3 하루 전체 ~ 11/4 오전은 다른 일정을 비워 주세요.</p>
             </div>
           </li>
           <li class="item" data-short="시트지 부착">
@@ -1195,6 +1212,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="log" aria-labelledby="log-h">
     <h2 id="log-h">변경 내역</h2>
     <ul class="log">
+      <li><time datetime="2026-10-25">10.25</time><span>공지에 11.03 최종심사 안내를 올리고, 일정의 최종심사와 심사 후 배치 변경 문구를 맞췄습니다.</span></li>
       <li><time datetime="2026-10-25">10.25</time><span>모바일에서 일정이 달력으로 보일 때 공지의 아래로 가기 버튼이 동작하지 않던 문제를 고쳤습니다.</span></li>
       <li><time datetime="2026-10-25">10.25</time><span>공지에 11.1~11.2 작품 설치 안내를 올렸습니다. 시트지는 종이 테이프로 가부착만 하고, 점심 · 저녁 시간은 피해서 방문해 주세요.</span></li>
       <li><time datetime="2026-10-25">10.25</time><span>일정에 전시 설치 확정 일정을 반영했습니다. 11.01 설치 1일차, 11.02 설치 2일차(22:00 마무리), 11.03 최종심사 9:00와 13:00–18:00 배치 변경, 11.04 17:00 오픈식입니다.</span></li>
