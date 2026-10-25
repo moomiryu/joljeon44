@@ -515,6 +515,22 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
     <h2 id="notice-h">공지</h2>
     <div class="cards">
     <article class="card">
+      <a class="notice-link" href="#teardown">
+        <h3>전시 일정 및 철거 안내</h3>
+        <p class="due">전원 · 전시 기간 + 목업 철거 · <b>11.4 수 ~ 11.10 화</b></p>
+        <ul>
+          <li>전시 기간: 11월 4일(수) ~ 11월 10일(화)</li>
+          <li>관람 시간: 매일 10:00 ~ 20:00</li>
+          <li>11월 10일(화) 20:00 전시 종료 직후 바로 목업 철거를 진행합니다.</li>
+          <li>11/10(화) 저녁에는 다른 일정을 잡지 마시고 꼭 본인 작품 철거에 참여해 주세요.</li>
+          <li>철거에 참여하지 않아 생긴 목업 파손은 졸준위가 책임지지 않습니다.</li>
+        </ul>
+      </a>
+      <p class="notice-go">
+        <a href="#teardown">전시 · 철거 일정 <span aria-hidden="true">↓</span></a>
+      </p>
+    </article>
+    <article class="card">
       <a class="notice-link" href="#judging">
         <h3>[중요] 11월 3일 최종심사 안내</h3>
         <p class="due">전원 · 최종심사 + 배치 변경 · <b>11.3 화</b></p>
@@ -879,15 +895,15 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
             <span class="item__tag">전시</span>
             <div class="item__body">
               <span class="item__title">졸업전시 시작</span>
-              <p>백주년기념관</p>
+              <p>백주년기념관 · 관람 시간 매일 <span class="when">10:00–20:00</span></p>
             </div>
           </li>
         </ul>
       </li>
-      <li class="day" data-day="2026-11-05" data-end="2026-11-10">
+      <li class="day" data-day="2026-11-05" data-end="2026-11-09">
         <div class="day__date">
           <span class="day__num">11.05</span>
-          <span class="day__dow">목요일 <span class="day__to">– 11.10 화</span></span>
+          <span class="day__dow">목요일 <span class="day__to">– 11.09 월</span></span>
           <span class="dday" hidden></span>
         </div>
         <ul class="day__items">
@@ -895,22 +911,30 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
             <span class="item__tag">전시</span>
             <div class="item__body">
               <span class="item__title">졸업전시</span>
-              <p>백주년기념관</p>
+              <p>백주년기념관 · 관람 시간 매일 <span class="when">10:00–20:00</span></p>
             </div>
           </li>
         </ul>
       </li>
-      <li class="day" data-day="2026-11-11">
+      <li class="day" data-day="2026-11-10">
         <div class="day__date">
-          <span class="day__num">11.11</span>
-          <span class="day__dow">수요일</span>
+          <span class="day__num">11.10</span>
+          <span class="day__dow">화요일</span>
           <span class="dday" hidden></span>
         </div>
         <ul class="day__items">
-          <li class="item" data-short="철거">
+          <li class="item" data-short="전시 종료">
             <span class="item__tag">전시</span>
             <div class="item__body">
-              <span class="item__title">철거</span>
+              <span class="item__title">졸업전시 마지막 날</span>
+              <p>백주년기념관 · 관람 시간 <span class="when">10:00–20:00</span></p>
+            </div>
+          </li>
+          <li class="item item--due" id="teardown" data-short="목업 철거">
+            <span class="item__tag">철거</span>
+            <div class="item__body">
+              <span class="item__title">목업 철거</span>
+              <p><span class="when">20:00</span> 전시 종료 직후 바로 진행합니다. 저녁에는 다른 일정을 잡지 마시고 꼭 본인 작품 철거에 참여해 주세요. 참여하지 않아 생긴 목업 파손은 졸준위가 책임지지 않습니다.</p>
             </div>
           </li>
         </ul>
@@ -1212,6 +1236,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="log" aria-labelledby="log-h">
     <h2 id="log-h">변경 내역</h2>
     <ul class="log">
+      <li><time datetime="2026-10-25">10.25</time><span>공지에 전시 일정 및 철거 안내를 올렸습니다. 철거는 11.11이 아니라 11.10 20:00 전시 종료 직후로 일정을 고쳤습니다.</span></li>
       <li><time datetime="2026-10-25">10.25</time><span>공지에 11.03 최종심사 안내를 올리고, 일정의 최종심사와 심사 후 배치 변경 문구를 맞췄습니다.</span></li>
       <li><time datetime="2026-10-25">10.25</time><span>모바일에서 일정이 달력으로 보일 때 공지의 아래로 가기 버튼이 동작하지 않던 문제를 고쳤습니다.</span></li>
       <li><time datetime="2026-10-25">10.25</time><span>공지에 11.1~11.2 작품 설치 안내를 올렸습니다. 시트지는 종이 테이프로 가부착만 하고, 점심 · 저녁 시간은 피해서 방문해 주세요.</span></li>
