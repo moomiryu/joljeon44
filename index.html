@@ -245,6 +245,17 @@ h1 {
 }
 .notice-go a:hover { background: var(--bg); }
 
+/* alert notice: inverted so it is the first thing seen */
+.card--alert { background: var(--ink); color: var(--on-accent); }
+.card--alert:has(.notice-link:hover) { background: #2d2c40; }
+.card--alert h3 { color: var(--on-accent); font-size: var(--text-xl); line-height: 1.3; }
+.card--alert p, .card--alert ul { color: #e6e5f0; }
+.card--alert .due b { background: var(--on-accent); color: var(--ink); font-weight: 700; }
+.card--alert .notice-go a { border-color: var(--on-accent); color: var(--on-accent); }
+.card--alert .notice-go a:hover { background: #2d2c40; }
+.card--alert a:focus-visible { outline-color: var(--on-accent); }
+.card__flag { align-self: flex-start; font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; letter-spacing: .08em; padding: 2px 8px; border-radius: var(--r-tag); background: var(--on-accent); color: var(--ink); }
+
 /* where a notice lands: room above it, and a short tint so the eye finds it */
 .block[id], .card[id], .item[id], .file[id] { scroll-margin-top: 16px; }
 .file:target { animation: arrive 2.4s ease-out; border-radius: var(--r-tag); }
@@ -514,9 +525,10 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="notice" aria-labelledby="notice-h">
     <h2 id="notice-h">공지</h2>
     <div class="cards">
-    <article class="card">
+    <article class="card card--alert">
       <a class="notice-link" href="#body-size">
-        <h3>[중요] 판넬 본문 크기 안내</h3>
+        <span class="card__flag">중요 · 판넬 제작 전 확인</span>
+        <h3>판넬 본문 크기 안내</h3>
         <p class="due">판넬 제작 전 · 권장 본문 크기 · <b>10.27</b></p>
         <p>교수님들과 논의한 판넬 유형별 권장 본문 크기입니다.</p>
         <ul>
