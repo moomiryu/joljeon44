@@ -245,6 +245,14 @@ h1 {
 }
 .notice-go a:hover { background: var(--bg); }
 
+/* notice groups */
+.notice-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.notice-tabs a { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding-inline: 16px; border: 1px solid var(--accent); border-radius: var(--r-pill); color: var(--accent); font-size: var(--text-sm); font-weight: 700; text-decoration: none; }
+.notice-tabs a:hover { background: var(--accent-soft); }
+.notice-tabs span { font-family: var(--font-mono); font-weight: 500; background: var(--accent-soft); border-radius: var(--r-tag); padding: 0 6px; }
+#notice .block + .block { margin-top: 32px; }
+.sub__note { font-size: var(--text-sm); font-weight: 400; color: var(--muted); margin-left: 8px; }
+
 /* alert notice: inverted so it is the first thing seen */
 .card--alert { background: var(--ink); color: var(--on-accent); }
 .card--alert:has(.notice-link:hover) { background: #2d2c40; }
@@ -524,6 +532,12 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
   <section class="sec" id="notice" aria-labelledby="notice-h">
     <h2 id="notice-h">공지</h2>
+    <nav class="notice-tabs" aria-label="공지 분류">
+      <a href="#notice-visual">시각팀 <span>4</span></a>
+      <a href="#notice-dp">DP · 설치 · 운영 <span>8</span></a>
+    </nav>
+    <div class="block" id="notice-visual">
+    <h3 class="sub">시각팀 <span class="sub__note">판넬 · 도록 · 아이덴티티</span></h3>
     <div class="cards">
     <article class="card card--alert">
       <a class="notice-link" href="#body-size">
@@ -583,6 +597,11 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       </ul>
       <p><a href="https://shoot-envelope.vercel.app/" target="_blank" rel="noopener">전자 초대장 열기 ↗</a></p>
     </article>
+    </div>
+    </div>
+    <div class="block" id="notice-dp">
+    <h3 class="sub">DP · 설치 · 운영 <span class="sub__note">전시 설치 · 심사 · 오픈 · 철거 · 지킴이 · 집기</span></h3>
+    <div class="cards">
     <article class="card">
       <a class="notice-link" href="#guard">
         <h3>전시 지킴이 신청 안내</h3>
@@ -712,6 +731,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
         <a href="#teardown">전시 · 철거 일정 <span aria-hidden="true">↓</span></a>
       </p>
     </article>
+    </div>
     </div>
   </section>
 
@@ -1359,6 +1379,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="log" aria-labelledby="log-h">
     <h2 id="log-h">변경 내역</h2>
     <ul class="log">
+      <li><time datetime="2026-10-28">10.28</time><span>공지를 시각팀(판넬 · 도록 · 아이덴티티)과 DP · 설치 · 운영(설치 · 심사 · 오픈 · 철거 · 지킴이 · 집기)으로 나누어 정리했습니다.</span></li>
       <li><time datetime="2026-10-28">10.28</time><span>구글 폼에서 작품 제목 · 이름 제출, 가구 트랙 캡션 제출, 판넬 일괄 제작 신청을 내렸습니다. 도록 · SNS 스크립트 제출만 남아 있습니다.</span></li>
       <li><time datetime="2026-10-28">10.28</time><span>공지에 도록 이미지 텍스트 서체 안내를 올렸습니다. 가이드의 작년(43회) 도록 링크가 열리지 않아 주소를 고쳤습니다.</span></li>
       <li><time datetime="2026-10-27">10.27</time><span>공지에 전시 전기 사용 수요조사를 올리고, 일정에 10.28 조사 마감과 시트 링크를 넣었습니다.</span></li>
