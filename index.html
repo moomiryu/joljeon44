@@ -253,6 +253,9 @@ h1 {
 #notice .block + .block { margin-top: 32px; }
 .sub__note { font-size: var(--text-sm); font-weight: 400; color: var(--muted); margin-left: 8px; }
 
+.card__img { display: block; width: 100%; height: auto; border-radius: var(--r-tag); }
+.card figcaption { font-size: var(--text-xs); color: var(--muted); margin-top: 4px; }
+
 /* alert notice: inverted so it is the first thing seen */
 .card--alert { background: var(--ink); color: var(--on-accent); }
 .card--alert:has(.notice-link:hover) { background: #2d2c40; }
@@ -515,7 +518,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
     <p class="eyebrow"><span>서울과학기술대학교 산업디자인학과</span> <span>제44회 졸업전시 준비위원회</span></p>
     <h1>졸전 안내판</h1>
     <p class="lede">일정, 구글 폼, 가이드를 한곳에 모았습니다.</p>
-    <p class="stamp">갱신 <time datetime="2026-10-28">2026.10.28</time></p>
+    <p class="stamp">갱신 <time datetime="2026-10-29">2026.10.29</time></p>
     <nav class="jump" aria-label="바로가기">
       <a href="#notice">공지</a>
       <a href="#schedule">일정</a>
@@ -534,7 +537,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
     <h2 id="notice-h">공지</h2>
     <nav class="notice-tabs" aria-label="공지 분류">
       <a href="#notice-visual">시각팀 <span>4</span></a>
-      <a href="#notice-dp">DP · 설치 · 운영 <span>8</span></a>
+      <a href="#notice-dp">DP · 설치 · 운영 <span>9</span></a>
     </nav>
     <div class="block" id="notice-visual">
     <h3 class="sub">시각팀 <span class="sub__note">판넬 · 도록 · 아이덴티티</span></h3>
@@ -661,6 +664,24 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       </a>
       <p class="notice-go">
         <a href="#file-layout">배치안 파일 <span aria-hidden="true">↓</span></a>
+      </p>
+    </article>
+    <article class="card">
+      <a class="notice-link" href="#portfolio">
+        <h3>포트폴리오존 안내</h3>
+        <p class="due">전원 · 포트폴리오 인쇄 후 지참 · <b>11.1 일 ~ 11.2 월</b></p>
+        <ul>
+          <li>위치: 1층 서점 옆 포트폴리오존</li>
+          <li>설치 일정: 11/1(일) ~ 11/2(월). 개인 포트폴리오를 인쇄해 가져와서 직접 배치해 주세요.</li>
+          <li>배치한 뒤에 졸준위에서 위치를 조정할 수 있습니다.</li>
+        </ul>
+        <figure>
+          <img class="card__img" src="img/portfolio-zone.jpg" width="1200" height="689" loading="lazy" alt="1층 포트폴리오존 예상 렌더링. 어두운 공간에 기울어진 흰 선반 패널이 한 줄로 서 있고, 패널마다 위쪽에 조명이 달려 있으며 선반에 포트폴리오가 놓여 있다.">
+          <figcaption>예상 렌더링입니다. 실제 모습은 다를 수 있습니다.</figcaption>
+        </figure>
+      </a>
+      <p class="notice-go">
+        <a href="#portfolio">포트폴리오존 일정 <span aria-hidden="true">↓</span></a>
       </p>
     </article>
     <article class="card">
@@ -978,6 +999,13 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
             <div class="item__body">
               <span class="item__title">작품 설치 1일차 · 목업 설치 + 시트지 가부착</span>
               <p><span class="when">09:00–23:59</span> 백주년 전층 개방, 23:59까지 설치 가능합니다. 시트지는 절대 본부착하지 말고, 졸준위가 제공하는 종이 테이프로 가부착만 해 주세요. 점심 12:00–13:00 · 저녁 18:00–19:00에는 졸준위가 자리에 없어 설치가 어렵습니다.</p>
+            </div>
+          </li>
+          <li class="item" id="portfolio" data-short="포트폴리오존">
+            <span class="item__tag">설치</span>
+            <div class="item__body">
+              <span class="item__title">포트폴리오존 설치 (11.01 ~ 11.02)</span>
+              <p>1층 서점 옆 포트폴리오존입니다. 개인 포트폴리오를 인쇄해 가져와서 배치합니다. 배치한 뒤에 졸준위에서 위치를 조정할 수 있습니다.</p>
             </div>
           </li>
         </ul>
@@ -1380,6 +1408,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="log" aria-labelledby="log-h">
     <h2 id="log-h">변경 내역</h2>
     <ul class="log">
+      <li><time datetime="2026-10-29">10.29</time><span>공지에 포트폴리오존 안내를 올렸습니다. 1층 서점 옆, 11.01 ~ 11.02에 인쇄한 포트폴리오를 가져와 배치합니다. 일정 11.01에도 넣었습니다.</span></li>
       <li><time datetime="2026-10-28">10.28</time><span>지킴이 시트 링크를 공지와 일정(10.27)에 넣었습니다. 선착순으로 받고 있으며, 이미 적힌 칸은 수정할 수 없습니다.</span></li>
       <li><time datetime="2026-10-28">10.28</time><span>공지를 시각팀(판넬 · 도록 · 아이덴티티)과 DP · 설치 · 운영(설치 · 심사 · 오픈 · 철거 · 지킴이 · 집기)으로 나누어 정리했습니다.</span></li>
       <li><time datetime="2026-10-28">10.28</time><span>구글 폼에서 작품 제목 · 이름 제출, 가구 트랙 캡션 제출, 판넬 일괄 제작 신청을 내렸습니다. 도록 · SNS 스크립트 제출만 남아 있습니다.</span></li>
