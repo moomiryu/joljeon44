@@ -536,7 +536,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="notice" aria-labelledby="notice-h">
     <h2 id="notice-h">공지</h2>
     <nav class="notice-tabs" aria-label="공지 분류">
-      <a href="#notice-visual">시각팀 <span>4</span></a>
+      <a href="#notice-visual">시각팀 <span>5</span></a>
       <a href="#notice-dp">DP · 설치 · 운영 <span>8</span></a>
     </nav>
     <div class="block" id="notice-visual">
@@ -557,6 +557,20 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
       </a>
       <p class="notice-go">
         <a href="#body-size">판넬 규격 <span aria-hidden="true">↓</span></a>
+      </p>
+    </article>
+    <article class="card">
+      <a class="notice-link" href="#sheet-pickup">
+        <h3>일괄 제작 시트지 수령일 변경</h3>
+        <p class="due">일괄 제작 신청자 · 수령 <b>11.02 월</b> (10.30에서 변경)</p>
+        <p>일괄 제작 시트지 수령일이 10.30(금) 예상에서 11.02(월)로 변경되었습니다.</p>
+        <ul>
+          <li>업체에서 월요일에 퀵으로 보내 주며, 백주년기념관에서 졸준위가 수령합니다.</li>
+          <li>오후 6시 전 수령으로 안내했으며, 당일 일정이 확정되면 한 번 더 공지드리겠습니다.</li>
+        </ul>
+      </a>
+      <p class="notice-go">
+        <a href="#sheet-pickup">수령 일정 <span aria-hidden="true">↓</span></a>
       </p>
     </article>
     <article class="card">
@@ -941,22 +955,6 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
           </li>
         </ul>
       </li>
-      <li class="day" data-day="2026-10-30">
-        <div class="day__date">
-          <span class="day__num">10.30</span>
-          <span class="day__dow">금요일</span>
-          <span class="dday" hidden></span>
-        </div>
-        <ul class="day__items">
-          <li class="item" data-short="시트지 수령">
-            <span class="item__tag">판넬</span>
-            <div class="item__body">
-              <span class="item__title">일괄제작 시트지 수령 (예상)</span>
-              <p>*수령은 예상 일정으로, 추후 확정되면 재차 공지드리겠습니다.</p>
-            </div>
-          </li>
-        </ul>
-      </li>
       <li class="day" data-day="2026-10-31">
         <div class="day__date">
           <span class="day__num">10.31</span>
@@ -1007,6 +1005,13 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
             <div class="item__body">
               <span class="item__title">작품 설치 2일차 (마지막)</span>
               <p><span class="when">09:00–22:00</span> 최종심사 전 마지막 설치일입니다. 22:00까지 마무리해 주세요. 시트지는 종이 테이프로 가부착만 하고, 점심 · 저녁 시간(12:00–13:00 / 18:00–19:00)은 피해 주세요.</p>
+            </div>
+          </li>
+          <li class="item" id="sheet-pickup" data-short="시트지 수령">
+            <span class="item__tag">판넬</span>
+            <div class="item__body">
+              <span class="item__title">일괄제작 시트지 수령 (예상)</span>
+              <p><span class="when">18:00</span> 전 수령 예정입니다. 10.30(금)에서 바뀌었습니다. 업체에서 퀵으로 보내 주며, 백주년기념관에서 졸준위가 수령합니다. 당일 일정이 확정되면 한 번 더 공지드립니다.</p>
             </div>
           </li>
         </ul>
@@ -1284,7 +1289,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
           <tr><th scope="row">신청 방법</th><td>① 판넬 유형 고르기 ② 내 사이즈의 금액 확인 ③ 입금 (입금자명 <code>학번_이름</code>, 계좌는 신청 폼에 있습니다) ④ 출력 파일 업로드와 폼 작성</td></tr>
           <tr><th scope="row">마감</th><td><span class="when">10.22 (목) 18:00</span> (10.20에서 연장). 신청, 입금, 출력 파일 업로드를 모두 이때까지 마칩니다. 이후 추가 공동제작은 진행하지 않습니다.</td></tr>
           <tr><th scope="row">교수님 컨펌</th><td>필수입니다. 텍스트 · 이미지 · 레이아웃 전체에 대해 담당 교수님의 최종 컨펌을 받은 파일만 올립니다. 최종 컨펌이 어려워 신청을 취소하려면 류주성에게 개인 카카오톡으로 연락해 주세요. 폼에 적은 계좌로 환불해 드립니다.</td></tr>
-          <tr><th scope="row">수령</th><td><span class="when">10.30 (금)</span> 예상. *수령은 예상 일정으로, 추후 확정되면 재차 공지드리겠습니다.</td></tr>
+          <tr><th scope="row">수령</th><td><span class="when">11.02 (월)</span> 예정 (10.30에서 변경). 업체에서 퀵으로 보내 주며, 백주년기념관에서 졸준위가 수령합니다. 오후 6시 전 수령으로 안내했으며, 당일 일정이 확정되면 한 번 더 공지드립니다.</td></tr>
           <tr><th scope="row">파일</th><td>개인 드라이브 폴더의 [판넬] 폴더에 올립니다. A형은 <code>학번_이름_a타입.pdf</code>. B형은 <code>학번_이름_b타입 이미지.pdf</code>와 <code>학번_이름_b타입 텍스트.ai</code> 두 개를 올리고, ai 파일은 글꼴 외곽선을 꼭 깨 주세요.</td></tr>
         </tbody>
       </table>
@@ -1393,6 +1398,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   <section class="sec" id="log" aria-labelledby="log-h">
     <h2 id="log-h">변경 내역</h2>
     <ul class="log">
+      <li><time datetime="2026-10-29">10.29</time><span>일괄 제작 시트지 수령일이 10.30에서 11.02 (월)로 바뀌어 공지에 올리고, 일정과 판넬 규격 표를 고쳤습니다. 업체가 퀵으로 보내며 백주년기념관에서 졸준위가 수령합니다. 오후 6시 전 수령 예정입니다.</span></li>
       <li><time datetime="2026-10-29">10.29</time><span>끝난 공지인 전시 전기 사용 수요조사(10.28 마감)를 내렸습니다.</span></li>
       <li><time datetime="2026-10-29">10.29</time><span>공지에 포트폴리오존 안내를 올렸습니다. 1층 서점 옆, 11.01 ~ 11.02에 인쇄한 포트폴리오를 가져와 배치합니다. 일정 11.01에도 넣었습니다.</span></li>
       <li><time datetime="2026-10-28">10.28</time><span>지킴이 시트 링크를 공지와 일정(10.27)에 넣었습니다. 선착순으로 받고 있으며, 이미 적힌 칸은 수정할 수 없습니다.</span></li>
